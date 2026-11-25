@@ -8,10 +8,23 @@ ha_domain: hue
 The **Philips Hue** {% term integration %} allows you to control and monitor the lights and sensors connected to your Hue bridge. The integration supports:
 
 - Lights
+- Smart plugs
 - Motion sensors (including temperature and light level sensors)
 - Remotes and switches (as device triggers for automations, and also exposed as battery sensors when they are battery-powered)
 
 {% include integrations/config_flow.md %}
+
+## Smart plugs
+
+On V2 Hue bridges, Home Assistant automatically adds recognized smart plugs as outlet switches.
+To find the switch, go to {% my integrations title="**Settings** > **Devices & services**" %}, select the **Philips Hue** integration, and open your plug's device page.
+
+If your plug also has an enabled light entity, Home Assistant can still control the plug through it.
+Update your automations, scripts, and dashboards to use the switch entity.
+Use `switch.turn_on` and `switch.turn_off` for actions that turn the plug on or off.
+To keep light actions from controlling the plug directly, finish by [disabling its light entity](/docs/configuration/customizing-entities/#disabling-or-enabling-an-entity).
+
+Hue rooms, zones, scenes, and automations that include the plug can still turn it on or off through the bridge.
 
 ## Lights for Hue zones and rooms
 
