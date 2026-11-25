@@ -14,6 +14,14 @@ The **Philips Hue** {% term integration %} allows you to control and monitor the
 
 {% include integrations/config_flow.md %}
 
+## Smart plugs
+
+On V2 Hue bridges, Home Assistant automatically adds recognized smart plugs as outlet switches.
+If your automations or dashboards use the plug's previous light entity, update them to use the switch entity.
+To find the switch, go to {% my integrations title="**Settings** > **Devices & services**" %}, select the **Philips Hue** integration, and open your plug's device page.
+
+Hue rooms, zones, scenes, and automations that include the plug can still turn it on or off through the bridge.
+
 ## Lights for Hue zones and rooms
 
 The Hue concept is based on Rooms and Zones. Although the underlying Hue lights are exposed directly to Home Assistant, it might also be useful to interact with the `grouped lights` of the Hue ecosystem, for example, to turn all lights in a Hue group on/off at the same time.
@@ -46,13 +54,6 @@ After setting up the integration, the following options can be configured by goi
 {% configuration_basic %}
 Ignore connectivity status for the given devices:
   description: "Select devices for which the connectivity (availability) status should be ignored. This is useful for battery-powered devices like remotes that are reported as unavailable when they go to sleep."
-Smart plugs to expose as switches:
-  description: >-
-    Home Assistant exposes smart plugs as lights by default.
-    Select a plug to control it through an outlet switch entity.
-    Its original light entity becomes unavailable, so update the dashboards and automations that use it.
-    Clear the selection to restore the light entity.
-    Hue rooms, zones, scenes, and automations can still control the plug through the bridge.
 {% endconfiguration_basic %}
 
 ### V1 bridges (round shape)
